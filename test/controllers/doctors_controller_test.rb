@@ -5,14 +5,20 @@ class DoctorsControllerTest < ActionDispatch::IntegrationTest
     @doctor = doctors(:one)
   end
 
+  def setup
+    @base_title = "Smart-Health-Care"
+  end
+
   test "should get index" do
     get doctors_url
     assert_response :success
+    assert_select "title", "Doctors | #{@base_title}"
   end
 
   test "should get new" do
     get new_doctor_url
     assert_response :success
+    assert_select "title", "Add Doctor | #{@base_title}"
   end
 
   test "should create doctor" do
@@ -26,11 +32,13 @@ class DoctorsControllerTest < ActionDispatch::IntegrationTest
   test "should show doctor" do
     get doctor_url(@doctor)
     assert_response :success
+    assert_select "title", "Show Doctor | #{@base_title}"
   end
 
   test "should get edit" do
     get edit_doctor_url(@doctor)
     assert_response :success
+    assert_select "title", "Edit Doctor | #{@base_title}"
   end
 
   test "should update doctor" do
