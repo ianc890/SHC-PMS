@@ -16,6 +16,7 @@ gem 'fog',                     '1.38.0'
 gem 'will_paginate',           '3.1.0'
 gem 'bootstrap-will_paginate', '0.0.10'
 gem 'bootstrap-sass',          '3.3.6'
+gem 'bootstrap_sb_admin_base_v2'
 # Use Puma as the app server
 gem 'puma',                    '3.4.0'
 # Use SCSS for stylesheets

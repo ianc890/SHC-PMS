@@ -5,20 +5,26 @@ class PatientsController < ApplicationController
   # GET /patients.json
   def index
     @patients = Patient.all
+    @doctors = Doctor.all
   end
 
   # GET /patients/1
   # GET /patients/1.json
   def show
+    @patient = Patient.find(params[:id])
+    @doctor = Doctor.find(params[:id])
   end
 
   # GET /patients/new
   def new
     @patient = Patient.new
+    @doctors = Doctor.all
   end
 
   # GET /patients/1/edit
   def edit
+    @patient = Patient.find(params[:id])
+    @doctors = Doctor.all
   end
 
   # POST /patients

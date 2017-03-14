@@ -48,7 +48,7 @@
 
   <div class="field">
     <%= f.label :doctor_id %>
-    <%= f.number_field :doctor_id %>
+    <%= collection_select(:patient, :doctor_id, @doctors, :id, :name, {:prompt => false}) %>
   </div>
 
   <div class="actions">

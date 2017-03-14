@@ -17,7 +17,7 @@ class PatientsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create patient" do
     assert_difference('Patient.count') do
-      post patients_url, params: { patient: { address: @patient.address, date_of_Birth: @patient.date_of_Birth, doctor_id: @patient.doctor_id, infection: @patient.infection, injury: @patient.injury, name: @patient.name, observations: @patient.observations, phone_number: @patient.phone_number } }
+    post patients_url, params: { patient: { address: @patient.address, date_of_Birth: @patient.date_of_Birth, doctor_id: @patient.doctor_id, infection: @patient.infection, injury: @patient.injury, name: @patient.name, observations: @patient.observations, phone_number: @patient.phone_number } }
     end
 
     assert_redirected_to patient_url(Patient.last)
