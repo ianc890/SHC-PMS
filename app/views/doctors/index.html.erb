@@ -2,9 +2,10 @@
 
 <p id="notice"><%= notice %></p>
 
-<h1>Doctors</h1>
+<h2 class="sub-header">Doctors</h2>
 
-<table>
+<div class="table-responsive">
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Name</th>
@@ -33,6 +34,11 @@
     <% end %>
   </tbody>
 </table>
+</div>
+
+<form class="navbar-form navbar-right">
+            <input type="text" class="form-control" placeholder="Search...">
+          </form>
 
 <br>
 

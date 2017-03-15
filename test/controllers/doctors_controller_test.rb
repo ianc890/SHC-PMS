@@ -1,56 +1,9 @@
 require 'test_helper'
 
 class DoctorsControllerTest < ActionDispatch::IntegrationTest
-  setup do
-    @doctor = doctors(:one)
-  end
-
-  def setup
-    @base_title = "Smart-Health-Care"
-  end
-
-  test "should get index" do
-    get doctors_url
-    assert_response :success
-    assert_select "title", "Doctors | #{@base_title}"
-  end
-
   test "should get new" do
-    get new_doctor_url
+    get signup_path
     assert_response :success
-    assert_select "title", "Add Doctor | #{@base_title}"
   end
 
-  test "should create doctor" do
-    assert_difference('Doctor.count') do
-      post doctors_url, params: { doctor: { address: @doctor.address, contact_number: @doctor.contact_number, date_of_birth: @doctor.date_of_birth, email: @doctor.email, job_title: @doctor.job_title, name: @doctor.name } }
-    end
-
-    assert_redirected_to doctor_url(Doctor.last)
-  end
-
-  test "should show doctor" do
-    get doctor_url(@doctor)
-    assert_response :success
-    assert_select "title", "Show Doctor | #{@base_title}"
-  end
-
-  test "should get edit" do
-    get edit_doctor_url(@doctor)
-    assert_response :success
-    assert_select "title", "Edit Doctor | #{@base_title}"
-  end
-
-  test "should update doctor" do
-    patch doctor_url(@doctor), params: { doctor: { address: @doctor.address, contact_number: @doctor.contact_number, date_of_birth: @doctor.date_of_birth, email: @doctor.email, job_title: @doctor.job_title, name: @doctor.name } }
-    assert_redirected_to doctor_url(@doctor)
-  end
-
-  test "should destroy doctor" do
-    assert_difference('Doctor.count', -1) do
-      delete doctor_url(@doctor)
-    end
-
-    assert_redirected_to doctors_url
-  end
 end
