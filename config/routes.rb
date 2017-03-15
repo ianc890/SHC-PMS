@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get 'patients/edit'
   get 'patients/show'
 
+  get 'doctors/index'
+
   root 'static_pages#home'
 
   resources :patients
