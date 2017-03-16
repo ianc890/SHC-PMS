@@ -7,6 +7,7 @@ class SessionsController < ApplicationController
     if doctor && doctor.authenticate(params[:session][:password])
       # Log the user in and redirect to the user's show page.
       log_in doctor
+      params[:session][:remember_me] == '1' ? remember(doctor) : forget(doctor)
       redirect_to doctor
     else
       # Create an error message
@@ -16,7 +17,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    log_out
+    log_out if logged_in?
     redirect_to root_url
   end
 end

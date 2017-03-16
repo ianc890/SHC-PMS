@@ -74,4 +74,8 @@ class DoctorTest < ActiveSupport::TestCase
     @doctor.password = @doctor.password_confirmation = "a" * 5
     assert_not @doctor.valid?
   end
+
+  test "authenticated? should return false for a user with nil digest" do
+    assert_not @doctor.authenticated?('')
+  end
 end
