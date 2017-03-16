@@ -12,6 +12,7 @@ class DoctorsController < ApplicationController
     @doctor = Doctor.new(doctor_params)    # Not the final implementation!
     if @doctor.save
       # Handle a successful save
+      log_in @doctor
       flash[:success] = "Welcome to the Smart-Health-Care App!"
       redirect_to @doctor
     else

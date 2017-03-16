@@ -1,1 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+michael:
+  name: Michael Example
+  date_of_birth: 2017-03-08
+  job_title: Example Doctor
+  address: 40 Fake Street
+  contact_number: 0851234567
+  email: michael@example.com
+  password_digest: <%= Doctor.digest('password') %>

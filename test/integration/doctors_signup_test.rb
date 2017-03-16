@@ -36,5 +36,6 @@ class DoctorsSignupTest < ActionDispatch::IntegrationTest
     end
     follow_redirect!
     assert_template 'doctors/show'
+    assert is_logged_in?
   end
 end
