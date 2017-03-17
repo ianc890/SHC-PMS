@@ -2,6 +2,7 @@ class DoctorsController < ApplicationController
 
   before_action :logged_in_doctor, only: [:index, :edit, :update, :destroy]
   before_action :correct_doctor,   only: [:edit, :update]
+  before_action :admin_user,     only: :destroy
 
   def index
     @doctors = Doctor.paginate(page: params[:page])
@@ -70,5 +71,10 @@ class DoctorsController < ApplicationController
     def correct_doctor
       @doctor = Doctor.find(params[:id])
       redirect_to(root_url) unless current_doctor?(@doctor)
+    end
+
+    # Confirms an admin user.
+    def admin_user
+      redirect_to(root_url) unless current_doctor.admin?
     end
 end

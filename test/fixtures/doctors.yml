@@ -7,6 +7,7 @@ michael:
   contact_number: 0851234567
   email: michael@example.com
   password_digest: <%= Doctor.digest('password') %>
+  admin: true
 
 archer:
   name: Sterling Archer

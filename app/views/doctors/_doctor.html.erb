@@ -1,7 +1,7 @@
 <li>
   <%= gravatar_for doctor, size: 50 %>
   <%= link_to doctor.name, doctor %>
-  <% if !current_doctor?(doctor) %>
+  <% if current_doctor.admin? && !current_doctor?(doctor) %>
     | <%= link_to "delete", doctor, method: :delete,
                                   data: { confirm: "You sure?" } %>
   <% end %>

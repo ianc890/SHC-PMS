@@ -30,6 +30,16 @@ class DoctorsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to login_url
   end
 
+  test "should not allow the admin attribute to be edited via the web" do
+    log_in_as(@other_doctor)
+    assert_not @other_doctor.admin?
+    patch doctor_path(@other_doctor), params: {
+                                    doctor: { password:              "password",
+                                            password_confirmation: "password",
+                                            admin: true } }
+    assert_not @other_doctor.admin?
+  end
+
   test "should redirect edit when logged in as wrong user" do
     log_in_as(@other_doctor)
     get edit_doctor_path(@doctor)
@@ -50,5 +60,13 @@ class DoctorsControllerTest < ActionDispatch::IntegrationTest
       delete doctor_path(@doctor)
     end
     assert_redirected_to login_url
+  end
+
+  test "should redirect destroy when logged in as a non-admin" do
+    log_in_as(@other_doctor)
+    assert_no_difference 'Doctor.count' do
+      delete doctor_path(@doctor)
+    end
+    assert_redirected_to root_url
   end
 end
