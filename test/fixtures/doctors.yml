@@ -7,3 +7,41 @@ michael:
   contact_number: 0851234567
   email: michael@example.com
   password_digest: <%= Doctor.digest('password') %>
+
+archer:
+  name: Sterling Archer
+  date_of_birth: 1977-11-18
+  job_title: Example Doctor
+  address: 20 Fake Street
+  contact_number: 0861234567
+  email: archer@example.com
+  password_digest: <%= Doctor.digest('password') %>
+
+lana:
+  name: Lana Kane
+  date_of_birth: 1977-11-18
+  job_title: Example Doctor
+  address: 20 Fake Street
+  contact_number: 0861234567
+  email: hands@example.com
+  password_digest: <%= Doctor.digest('password') %>
+
+malory:
+  name: Malory Archer
+  date_of_birth: 1977-11-18
+  job_title: Example Doctor
+  address: 20 Fake Street
+  contact_number: 0861234567
+  email: boss@example.com
+  password_digest: <%= Doctor.digest('password') %>
+
+<% 30.times do |n| %>
+doctor_<%= n %>:
+  name:  <%= "Doctor #{n}" %>
+  date_of_birth: <%= "1977-11-18" %>
+  job_title: <%= "Example Doctor" %>
+  address: <%= "20 Fake Street" %>
+  contact_number: <%= "0861234567" %>
+  email: <%= "doctor-#{n}@example.com" %>
+  password_digest: <%= Doctor.digest('password') %>
+<% end %>

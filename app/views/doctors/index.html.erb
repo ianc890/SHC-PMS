@@ -1,78 +1,10 @@
-<% provide(:title, "Doctors") %>
+<% provide(:title, 'All doctors') %>
+<h1>All doctors</h1>
 
-<p id="notice"><%= notice %></p>
+<%= will_paginate %>
 
-<h2 class="sub-header">Doctors</h2>
+<ul class="users">
+  <%= render @doctors %>
+</ul>
 
-<div class="table-responsive">
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Date of birth</th>
-      <th>Job title</th>
-      <th>Address</th>
-      <th>Contact number</th>
-      <th>Email</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @doctors.each do |doctor| %>
-      <tr>
-        <td><%= doctor.name %></td>
-        <td><%= doctor.date_of_birth %></td>
-        <td><%= doctor.job_title %></td>
-        <td><%= doctor.address %></td>
-        <td><%= doctor.contact_number %></td>
-        <td><%= doctor.email %></td>
-        <td><%= link_to 'Show', doctor %></td>
-        <td><%= link_to 'Edit', edit_doctor_path(doctor) %></td>
-        <td><%= link_to 'Destroy', doctor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-</div>
-
-<form class="navbar-form navbar-right">
-            <input type="text" class="form-control" placeholder="Search...">
-          </form>
-
-<br>
-
-<%= link_to 'New Doctor', new_doctor_path %>
-<br>
-<br>
-<br>
-<br>
-
-<div class="container">
-    <div class="row row-centered">
-
-<div class="row placeholders">
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img class = "img-circle" src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcT-1V2jqmjljzf9YisvJUkFB5PrCuONXtntUCbmz2_slu7K4anu" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Patients</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img class = "img-circle" src="http://icons.iconarchive.com/icons/fps.hu/free-christmas-flat-circle/512/calendar-icon.png" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Appointments</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img class = "img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img class = "img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-          </div>
-
-        </div>
-      </div>
+<%= will_paginate %>

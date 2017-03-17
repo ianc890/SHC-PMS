@@ -1,0 +1,29 @@
+<%= form_for(@doctor) do |f| %>
+  <%= render 'shared/error_messages', object: @doctor %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name, class: 'form-control' %>
+
+  <%= f.label :date_of_birth %>
+  <%= f.date_field :date_of_birth, class: 'form-control' %>
+
+  <%= f.label :job_title %>
+  <%= f.text_field :job_title, class: 'form-control' %>
+
+  <%= f.label :address %>
+  <%= f.text_field :address, class: 'form-control' %>
+
+  <%= f.label :contact_number %>
+  <%= f.text_field :contact_number, class: 'form-control' %>
+
+  <%= f.label :email %>
+  <%= f.email_field :email, class: 'form-control' %>
+
+  <%= f.label :password %>
+  <%= f.password_field :password, class: 'form-control' %>
+
+  <%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation, class: 'form-control' %>
+
+  <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+<% end %>

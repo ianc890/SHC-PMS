@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       # Log the user in and redirect to the user's show page.
       log_in doctor
       params[:session][:remember_me] == '1' ? remember(doctor) : forget(doctor)
-      redirect_to doctor
+      redirect_back_or doctor
     else
       # Create an error message
       flash.now[:danger] = 'Invalid email/password combination'
