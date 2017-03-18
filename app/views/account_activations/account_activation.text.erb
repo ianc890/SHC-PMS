@@ -1,0 +1,5 @@
+Hi <%= @doctor.name %>,
+
+Welcome to the Smart-Health-Care Application! Click on the link below to activate your account:
+
+<%= edit_account_activation_url(@doctor.activation_token, email: @doctor.email) %>

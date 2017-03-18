@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'password_resets/new'
+
+  get 'password_resets/edit'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   # get 'static_pages/home'
   get  '/signup',  to: 'doctors#new'
@@ -20,6 +24,8 @@ Rails.application.routes.draw do
   root 'static_pages#home'
 
   resources :doctors
+  resources :account_activations, only: [:edit]
+  resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :patients
   resources :appointments
 end

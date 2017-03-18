@@ -22,7 +22,7 @@ module SessionsHelper
       @current_doctor ||= Doctor.find_by(id: doctor_id)
     elsif (doctor_id = cookies.signed[:doctor_id])
       doctor = Doctor.find_by(id: doctor_id)
-      if doctor && doctor.authenticated?(cookies[:remember_token])
+      if doctor && doctor.authenticated?(:remember, cookies[:remember_token])
         log_in doctor
         @current_doctor = doctor
       end

@@ -5,6 +5,10 @@ class DoctorsSignupTest < ActionDispatch::IntegrationTest
   #   assert true
   # end
 
+  def setup
+    ActionMailer::Base.deliveries.clear
+  end
+
   test "invalid signup information" do
     get signup_path
     assert_no_difference 'Doctor.count' do
@@ -22,7 +26,7 @@ class DoctorsSignupTest < ActionDispatch::IntegrationTest
     # assert_select 'div.<CSS class for field with error>'
   end
 
-  test "valid signup information" do
+  test "valid signup information with account activation" do
     get signup_path
     assert_difference 'Doctor.count', 1 do
       post doctors_path, params: { doctor: { name:  "Example Doctor",
@@ -34,6 +38,21 @@ class DoctorsSignupTest < ActionDispatch::IntegrationTest
                                          password:              "password",
                                          password_confirmation: "password" } }
     end
+    assert_equal 1, ActionMailer::Base.deliveries.size
+    doctor = assigns(:doctor)
+    assert_not doctor.activated?
+    # Try to log in before activation.
+    log_in_as(doctor)
+    assert_not is_logged_in?
+    # Invalid activation token
+    get edit_account_activation_path("invalid token", email: doctor.email)
+    assert_not is_logged_in?
+    # Valid token, wrong email
+    get edit_account_activation_path(doctor.activation_token, email: 'wrong')
+    assert_not is_logged_in?
+    # Valid activation token
+    get edit_account_activation_path(doctor.activation_token, email: doctor.email)
+    assert doctor.reload.activated?
     follow_redirect!
     assert_template 'doctors/show'
     assert is_logged_in?

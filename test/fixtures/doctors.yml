@@ -8,6 +8,8 @@ michael:
   email: michael@example.com
   password_digest: <%= Doctor.digest('password') %>
   admin: true
+  activated: true
+  activated_at: <%= Time.zone.now %>
 
 archer:
   name: Sterling Archer
@@ -17,6 +19,8 @@ archer:
   contact_number: 0861234567
   email: archer@example.com
   password_digest: <%= Doctor.digest('password') %>
+  activated: true
+  activated_at: <%= Time.zone.now %>
 
 lana:
   name: Lana Kane
@@ -26,6 +30,8 @@ lana:
   contact_number: 0861234567
   email: hands@example.com
   password_digest: <%= Doctor.digest('password') %>
+  activated: true
+  activated_at: <%= Time.zone.now %>
 
 malory:
   name: Malory Archer
@@ -35,6 +41,8 @@ malory:
   contact_number: 0861234567
   email: boss@example.com
   password_digest: <%= Doctor.digest('password') %>
+  activated: true
+  activated_at: <%= Time.zone.now %>
 
 <% 30.times do |n| %>
 doctor_<%= n %>:
@@ -45,4 +53,6 @@ doctor_<%= n %>:
   contact_number: <%= "0861234567" %>
   email: <%= "doctor-#{n}@example.com" %>
   password_digest: <%= Doctor.digest('password') %>
+  activated: true
+  activated_at: <%= Time.zone.now %>
 <% end %>

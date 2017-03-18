@@ -76,6 +76,6 @@ class DoctorTest < ActiveSupport::TestCase
   end
 
   test "authenticated? should return false for a user with nil digest" do
-    assert_not @doctor.authenticated?('')
+    assert_not @doctor.authenticated?(:remember, '')
   end
 end
