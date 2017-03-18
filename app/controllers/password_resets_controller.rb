@@ -30,6 +30,7 @@ class PasswordResetsController < ApplicationController
       render 'edit'
     elsif @doctor.update_attributes(doctor_params)          # Case (4)
       log_in @doctor
+      @doctor.update_attribute(:reset_digest, nil)
       flash[:success] = "Password has been reset."
       redirect_to @doctor
     else
