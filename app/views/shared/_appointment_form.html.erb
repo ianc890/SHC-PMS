@@ -1,0 +1,11 @@
+<%= form_for(@appointment) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+    <%= f.date_field :appointment_date, placeholder: "Enter appointment date...", class: 'form-control' %>
+
+    <%= f.time_field :appointment_time, placeholder: "Enter appointment time...", class: 'form-control' %>
+
+    <%= f.label :patient_id %>
+    <%= collection_select(:appointment, :patient_id, @patients, :id, :name, {:prompt => false}, class: 'form-control') %>
+
+  <%= f.submit "Schedule", class: "btn btn-primary" %>
+<% end %>

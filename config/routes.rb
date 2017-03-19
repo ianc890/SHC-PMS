@@ -14,10 +14,17 @@ Rails.application.routes.draw do
   get  '/login',   to: 'sessions#new'
   post '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
+
   get 'patients/index'
   get 'patients/new'
   get 'patients/edit'
   get 'patients/show'
+
+  get 'appointments/index'
+  get 'appointments/new'
+  get 'appointments/create'
+  get 'appointments/edit'
+  get 'appointments/show'
 
   get 'doctors/index'
 
@@ -26,6 +33,6 @@ Rails.application.routes.draw do
   resources :doctors
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
+  resources :appointments,          only: [:index, :create, :edit, :destroy, :new, :show, :update]
   resources :patients
-  resources :appointments
 end

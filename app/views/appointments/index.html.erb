@@ -1,14 +1,15 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Appointments</h1>
+  <h1>All Appointments</h1>
 
-<table>
+<div class="table-responsive">
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Appointment date</th>
-      <th>Appointment time</th>
-      <th>Doctor</th>
+      <th>Appointment Date</th>
+      <th>Appointment Time</th>
       <th>Patient</th>
+      <th>Doctor</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,8 +19,8 @@
       <tr>
         <td><%= appointment.appointment_date %></td>
         <td><%= appointment.appointment_time %></td>
-        <td><%= appointment.doctor_id %></td>
-        <td><%= appointment.patient_id %></td>
+        <td><%= appointment.patient.name %></td>
+        <td><%= appointment.doctor.name %></td>
         <td><%= link_to 'Show', appointment %></td>
         <td><%= link_to 'Edit', edit_appointment_path(appointment) %></td>
         <td><%= link_to 'Destroy', appointment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -27,6 +28,7 @@
     <% end %>
   </tbody>
 </table>
+</div>
 
 <br>
 

@@ -7,6 +7,7 @@ class DoctorTest < ActiveSupport::TestCase
 
   def setup
     @doctor = Doctor.new(name: "Example Doctor", date_of_birth: 28/04/1971, job_title: "Family Doctor", address: "40 Fake Street", contact_number: "085-1234567", email: "doctor@example.com", password: "foobar", password_confirmation: "foobar")
+    @patient = patients(:one)
   end
 
   test "should be valid" do
@@ -77,5 +78,13 @@ class DoctorTest < ActiveSupport::TestCase
 
   test "authenticated? should return false for a user with nil digest" do
     assert_not @doctor.authenticated?(:remember, '')
+  end
+
+  test "associated appointments should be destroyed" do
+    @doctor.save
+    @doctor.appointments.create!(appointment_date: 28/04/2017, appointment_time: "14:00:00", patient_id: @patient.id)
+    assert_difference 'Appointment.count', -1 do
+      @doctor.destroy
+    end
   end
 end

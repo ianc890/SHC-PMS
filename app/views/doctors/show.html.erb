@@ -8,4 +8,13 @@
       </h1>
     </section>
   </aside>
+  <div class="col-md-8">
+    <% if @doctor.appointments.any? %>
+      <h3>Appointments (<%= @doctor.appointments.count %>)</h3>
+      <ol class="microposts">
+        <%= render @appointments %>
+      </ol>
+      <%= will_paginate @appointments %>
+    <% end %>
+  </div>
 </div>

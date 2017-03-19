@@ -11,47 +11,29 @@
     </div>
   <% end %>
 
-  <div class="field">
     <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
+    <%= f.text_field :name, class: 'form-control' %>
 
-  <div class="field">
     <%= f.label :date_of_Birth %>
-    <%= f.date_select :date_of_Birth %>
-  </div>
+    <%= f.date_field :date_of_Birth, class: 'form-control' %>
 
-  <div class="field">
     <%= f.label :address %>
-    <%= f.text_field :address %>
-  </div>
+    <%= f.text_field :address, class: 'form-control' %>
 
-  <div class="field">
     <%= f.label :phone_number %>
-    <%= f.text_field :phone_number %>
-  </div>
+    <%= f.text_field :phone_number, class: 'form-control' %>
 
-  <div class="field">
     <%= f.label :infection %>
-    <%= f.text_area :infection %>
-  </div>
+    <%= f.text_area :infection, class: 'form-control' %>
 
-  <div class="field">
     <%= f.label :injury %>
-    <%= f.text_area :injury %>
-  </div>
+    <%= f.text_area :injury, class: 'form-control' %>
 
-  <div class="field">
     <%= f.label :observations %>
-    <%= f.text_area :observations %>
-  </div>
+    <%= f.text_area :observations, class: 'form-control' %>
 
-  <div class="field">
     <%= f.label :doctor_id %>
-    <%= collection_select(:patient, :doctor_id, @doctors, :id, :name, {:prompt => false}) %>
-  </div>
+    <%= collection_select(:patient, :doctor_id, @doctors, :id, :name, {:prompt => false}, class: 'form-control') %>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <%= f.submit "Create Patient", class: "btn btn-primary" %>
 <% end %>

@@ -1,0 +1,15 @@
+<li id="micropost-<%= appointment.id %>">
+  <%= link_to gravatar_for(appointment.doctor, size: 50), appointment.doctor %>
+  <span class="user"><%= link_to appointment.doctor.name, appointment.doctor %></span>
+  <span class="content"><%= appointment.appointment_date %></span>
+  <span class="content"><%= appointment.appointment_time %></span>
+  <span class="content"><%= appointment.patient.name %></span>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(appointment.created_at) %> ago.
+    <% if current_doctor?(appointment.doctor) %>
+      <%= link_to 'Edit', edit_appointment_path(appointment) %>
+      <%= link_to "Delete", appointment, method: :delete,
+                                       data: { confirm: "You sure?" } %>
+    <% end %>
+  </span>
+</li>

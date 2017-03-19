@@ -1,4 +1,5 @@
 class Doctor < ApplicationRecord
+  has_many :appointments, dependent: :destroy
   has_many :patients
 
   attr_accessor :remember_token, :activation_token, :reset_token
@@ -70,6 +71,12 @@ class Doctor < ApplicationRecord
   # Sends password reset email.
   def send_password_reset_email
     DoctorMailer.password_reset(self).deliver_now
+  end
+
+  # Defines a appointment-feed.
+  # See "Following users" for the full implementation.
+  def feed
+    Appointment.where("doctor_id = ?", id)
   end
 
   private
