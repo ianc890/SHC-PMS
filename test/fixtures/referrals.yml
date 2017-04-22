@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  priority: 1
+  medical_test: MyString
+  description: MyText
+  hospital: MyString
+  patient: one
+  doctor: one
+  hospital: one
+
+two:
+  priority: 1
+  medical_test: MyString
+  description: MyText
+  hospital: MyString
+  patient: two
+  doctor: two
+  hospital: two

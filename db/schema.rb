@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170318220933) do
+ActiveRecord::Schema.define(version: 20170420222530) do
 
   create_table "appointments", force: :cascade do |t|
     t.date     "appointment_date"
@@ -22,6 +22,21 @@ ActiveRecord::Schema.define(version: 20170318220933) do
     t.index ["doctor_id"], name: "index_appointments_on_doctor_id"
     t.index ["patient_id", "doctor_id"], name: "index_appointments_on_patient_id_and_doctor_id"
     t.index ["patient_id"], name: "index_appointments_on_patient_id"
+  end
+
+  create_table "delayed_jobs", force: :cascade do |t|
+    t.integer  "priority",   default: 0, null: false
+    t.integer  "attempts",   default: 0, null: false
+    t.text     "handler",                null: false
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["priority", "run_at"], name: "delayed_jobs_priority"
   end
 
   create_table "doctors", force: :cascade do |t|
@@ -41,20 +56,44 @@ ActiveRecord::Schema.define(version: 20170318220933) do
     t.string   "activation_digest"
     t.boolean  "activated",         default: false
     t.datetime "activated_at"
+    t.string   "picture"
     t.index ["email"], name: "index_doctors_on_email", unique: true
+  end
+
+  create_table "hospitals", force: :cascade do |t|
+    t.string   "hospital_name"
+    t.string   "county"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "patients", force: :cascade do |t|
     t.string   "name"
-    t.date     "date_of_Birth"
+    t.date     "date_of_birth"
+    t.string   "gender"
     t.string   "address"
-    t.string   "phone_number"
-    t.text     "infection"
-    t.text     "injury"
-    t.text     "observations"
+    t.string   "email"
+    t.string   "contact"
     t.integer  "doctor_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.index ["doctor_id", "created_at"], name: "index_patients_on_doctor_id_and_created_at"
+    t.index ["doctor_id"], name: "index_patients_on_doctor_id"
+  end
+
+  create_table "referrals", force: :cascade do |t|
+    t.integer  "priority"
+    t.string   "medical_test"
+    t.text     "description"
+    t.integer  "patient_id"
+    t.integer  "doctor_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "hospital_id"
+    t.index ["doctor_id", "created_at"], name: "index_referrals_on_doctor_id_and_created_at"
+    t.index ["doctor_id"], name: "index_referrals_on_doctor_id"
+    t.index ["hospital_id"], name: "index_referrals_on_hospital_id"
+    t.index ["patient_id"], name: "index_referrals_on_patient_id"
   end
 
 end

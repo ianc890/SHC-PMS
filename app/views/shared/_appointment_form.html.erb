@@ -8,4 +8,5 @@
     <%= collection_select(:appointment, :patient_id, @patients, :id, :name, {:prompt => false}, class: 'form-control') %>
 
   <%= f.submit "Schedule", class: "btn btn-primary" %>
+
 <% end %>

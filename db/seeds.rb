@@ -18,6 +18,20 @@ Doctor.create!(name:  "Example Doctor",
              activated: true,
              activated_at: Time.zone.now)
 
+             Patient.create!(name:  "Example Patient",
+                          date_of_birth: "1985/10/22",
+                          gender: "Male",
+                          address: "40 Main Street",
+                          email: "example@patient.com",
+                          contact: "0851234567",
+                          doctor_id: 1)
+
+            Hospital.create!(hospital_name:  "Beaumont Hospital",
+                          county: "Dublin")
+
+            Hospital.create!(hospital_name:  "Blackrock Clinic",
+                          county: "Dublin")
+
 # 99.times do |n|
 #  name  = Faker::Name.name
 #  date_of_birth = rand(Date.civil(1950, 1, 1)..Date.civil(2000, 12, 31))

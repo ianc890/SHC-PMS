@@ -2,17 +2,17 @@
 
 <p>
   <strong>Appointment Date:</strong>
-  <%= @appointment.appointment_date %>
+  <%= @appointment.fixed_date %>
 </p>
 
 <p>
   <strong>Appointment Time:</strong>
-  <%= @appointment.appointment_time %>
+  <%= @appointment.fixed_time %>
 </p>
 
 <p>
   <strong>Patient:</strong>
-  <%= @appointment.patient.name %>
+  <%= link_to @appointment.patient.name, @appointment.patient %>
 </p>
 
 <%= link_to 'Edit', edit_appointment_path(@appointment) %> |

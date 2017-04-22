@@ -1,0 +1,26 @@
+<%= form_for(@patient) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name, class: 'form-control' %>
+
+  <%= f.label :date_of_birth %>
+  <%= f.date_field :date_of_birth, class: 'form-control' %>
+
+  <%= f.label :gender %>
+  <%= collection_select(:patient, :gender, Patient::GENDER, :to_s, :to_s, {:prompt => false},class: 'form-control') %>
+
+  <%= f.label :address %>
+  <%= f.text_field :address, class: 'form-control' %>
+
+  <%= f.label :email %>
+  <%= f.email_field :email, class: 'form-control' %>
+
+  <%= f.label :contact_number %>
+  <%= f.text_field :contact_number, class: 'form-control' %>
+
+  <%= f.label :doctor_id %>
+  <%= collection_select(:patient, :doctor_id, @doctors, :id, :name, {:prompt => false}, class: 'form-control') %>
+
+  <%= f.submit "Submit", class: "btn btn-primary" %>
+<% end %>

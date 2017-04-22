@@ -14,26 +14,23 @@
     <%= f.label :name %>
     <%= f.text_field :name, class: 'form-control' %>
 
-    <%= f.label :date_of_Birth %>
-    <%= f.date_field :date_of_Birth, class: 'form-control' %>
+    <%= f.label :date_of_birth %>
+    <%= f.date_field :date_of_birth, class: 'form-control' %>
+
+    <%= f.label :gender %>
+    <%= collection_select(:patient, :gender, Patient::GENDER, :to_s, :to_s, {:prompt => false}, class: 'form-control') %>
 
     <%= f.label :address %>
     <%= f.text_field :address, class: 'form-control' %>
 
-    <%= f.label :phone_number %>
-    <%= f.text_field :phone_number, class: 'form-control' %>
+    <%= f.label :email %>
+    <%= f.text_field :email, class: 'form-control' %>
 
-    <%= f.label :infection %>
-    <%= f.text_area :infection, class: 'form-control' %>
-
-    <%= f.label :injury %>
-    <%= f.text_area :injury, class: 'form-control' %>
-
-    <%= f.label :observations %>
-    <%= f.text_area :observations, class: 'form-control' %>
+    <%= f.label :contact %>
+    <%= f.text_field :contact, class: 'form-control' %>
 
     <%= f.label :doctor_id %>
-    <%= collection_select(:patient, :doctor_id, @doctors, :id, :name, {:prompt => false}, class: 'form-control') %>
+    <%= f.text_field :doctor_id, :readonly => true, class: 'form-control' %>
 
     <%= f.submit "Create Patient", class: "btn btn-primary" %>
 <% end %>

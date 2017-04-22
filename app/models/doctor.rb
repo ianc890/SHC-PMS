@@ -1,6 +1,9 @@
 class Doctor < ApplicationRecord
   has_many :appointments, dependent: :destroy
   has_many :patients
+  has_many :referrals
+
+  mount_uploader :picture, PictureUploader
 
   attr_accessor :remember_token, :activation_token, :reset_token
   before_save   :downcase_email
@@ -16,6 +19,7 @@ class Doctor < ApplicationRecord
                     uniqueness: { case_sensitive: false }
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
+  validate  :picture_size
 
   # Returns the hash digest of the given string.
   def Doctor.digest(string)
@@ -77,9 +81,21 @@ class Doctor < ApplicationRecord
   # See "Following users" for the full implementation.
   def feed
     Appointment.where("doctor_id = ?", id)
+    Appointment.order('appointment_date DESC')
   end
 
+  def doctor_patient
+  end
+
+
   private
+
+  # Validates the size of an uploaded picture.
+    def picture_size
+      if picture.size > 5.megabytes
+        errors.add(:picture, "should be less than 5MB")
+      end
+    end
 
     # Converts email to all lower-case.
     def downcase_email

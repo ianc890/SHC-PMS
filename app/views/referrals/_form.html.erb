@@ -1,0 +1,34 @@
+<%= form_for([@patient, @patient.referrals.build]) do |f| %>
+  <% if @patient.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@patient.errors.count, "error") %> prohibited this referral from being saved:</h2>
+
+      <ul>
+      <% @patient.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <%= f.label :priority %>
+    <%= f.number_field :priority, class: 'form-control' %>
+
+    <%= f.label :medical_test %>
+    <%= f.text_field :medical_test, class: 'form-control' %>
+
+    <%= f.label :description %>
+    <%= f.text_area :description, class: 'form-control' %>
+
+    <%= f.label :patient_id %>
+    <%= f.text_field :patient_id, :value => @patient.name, :readonly => true, class: 'form-control' %>
+
+    <%= f.label :doctor_id %>
+    <%= f.text_field :doctor_id, :value => @patient.doctor.name, :readonly => true, class: 'form-control' %>
+
+    <%= f.label :hospital_id %>
+    <%= collection_select(@patient, :hospital, Referral::HOSPITAL, :to_s, :to_s, {:prompt => "Please select a hospital"}, class: 'form-control') %>
+    <%= collection_select(:referral, :hospital_id, @hospitals, :id, :hospital_name, {:prompt => false}, class: 'form-control') %>
+
+    <%= f.submit "Request", class: "btn btn-primary" %>
+<% end %>

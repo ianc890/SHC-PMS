@@ -1,10 +1,13 @@
 class PatientsController < ApplicationController
   before_action :set_patient, only: [:show, :edit, :update, :destroy]
+  before_action :logged_in_doctor, only: [:create, :destroy, :edit]
+  before_action :correct_doctor,   only: [:destroy, :edit]
 
   # GET /patients
   # GET /patients.json
   def index
-    @patients = Patient.all
+  #  @patients = Patient.all
+  @patients = Patient.search(params[:search])
     @doctors = Doctor.all
   end
 
@@ -13,12 +16,13 @@ class PatientsController < ApplicationController
   def show
     @patient = Patient.find(params[:id])
     #@doctor = Doctor.find(params[:id])
+    #session[:item_attributes] = @patient
   end
 
   # GET /patients/new
   def new
     @patient = Patient.new
-    @doctors = Doctor.all
+    @doctors = current_doctor
   end
 
   # GET /patients/1/edit
@@ -31,6 +35,8 @@ class PatientsController < ApplicationController
   # POST /patients.json
   def create
     @patient = Patient.new(patient_params)
+
+    @patient.doctor_id = current_doctor.id if current_doctor
 
     respond_to do |format|
       if @patient.save
@@ -75,6 +81,11 @@ class PatientsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def patient_params
-      params.require(:patient).permit(:name, :date_of_Birth, :address, :phone_number, :infection, :injury, :observations, :doctor_id)
+      params.require(:patient).permit(:name, :date_of_birth, :gender, :address, :email, :contact, :doctor_id)
+    end
+
+    def correct_doctor
+      @patient = current_doctor.patients.find_by(id: params[:id])
+      redirect_to patients_path if @patient.nil?
     end
 end

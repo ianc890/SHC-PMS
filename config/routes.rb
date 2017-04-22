@@ -15,6 +15,11 @@ Rails.application.routes.draw do
   post '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
 
+  get 'hospitals/index'
+  get 'hospitals/new'
+  get 'hospitals/edit'
+  get 'hospitals/show'
+
   get 'patients/index'
   get 'patients/new'
   get 'patients/edit'
@@ -30,9 +35,12 @@ Rails.application.routes.draw do
 
   root 'static_pages#home'
 
+  resources :hospitals
+  resources :patients do
+    resources :referrals
+  end
   resources :doctors
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :appointments,          only: [:index, :create, :edit, :destroy, :new, :show, :update]
-  resources :patients
 end

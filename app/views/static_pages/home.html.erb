@@ -1,6 +1,6 @@
 <% if logged_in? %>
   <div class="row">
-    <aside class="col-md-4">
+    <aside class="col-md-3">
       <section class="user_info">
         <%= render 'shared/doctor_info' %>
       </section>
@@ -8,11 +8,45 @@
         <%= render 'shared/appointment_form' %>
       </section>
     </aside>
-    <div class="col-md-8">
+    <div class="col-md-4">
       <h3>Appointment Feed</h3>
       <%= render 'shared/feed' %>
     </div>
-  </div>
+
+    <div class="col-md-5">
+
+  <!-- Service Panels -->
+       <!-- The circle icons use Font Awesome's stacked icon classes. For more information, visit http://fontawesome.io/examples/ -->
+           <div class="col-md-6 col-sm-6">
+               <div class="panel panel-default text-center">
+                   <div class="panel-heading">
+                       <span class="fa-stack fa-5x">
+                             <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                             <i class="fa fa-heart fa-stack-1x fa-inverse"></i>
+                       </span>
+                   </div>
+                   <div class="panel-body">
+                       <h4>Patients</h4>
+                       <%= link_to 'View all', patients_path, class: 'btn btn-primary' %>
+                   </div>
+               </div>
+           </div>
+           <div class="col-md-6 col-sm-6">
+               <div class="panel panel-default text-center">
+                   <div class="panel-heading">
+                       <span class="fa-stack fa-5x">
+                             <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                             <i class="fa fa-calendar fa-stack-1x fa-inverse"></i>
+                       </span>
+                   </div>
+                   <div class="panel-body">
+                       <h4>Appointments</h4>
+                       <%= link_to 'View all', appointments_path, class: 'btn btn-primary' %>
+                   </div>
+               </div>
+           </div>
+         </div>
+     </div>
 <% else %>
   <div class="center jumbotron">
     <h1>Welcome to the Smart-Health-Care Patient Management System</h1>

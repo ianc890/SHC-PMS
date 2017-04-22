@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Referrals</h1>
+
+<div class="table-responsive">
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Priority</th>
+      <th>Medical Test</th>
+      <th>Description</th>
+      <th>Patient</th>
+      <th>Doctor</th>
+      <th>Hospital</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @referrals.each do |referral| %>
+      <tr>
+        <td><%= referral.priority %></td>
+        <td><%= referral.medical_test %></td>
+        <td><%= referral.description %></td>
+        <td><%= referral.patient.name %></td>
+        <td><%= referral.doctor.name %></td>
+        <td><%= referral.hospital.hospital_name %></td>
+        <td><%= link_to 'Show', patient_referral_path(@patient, referral) %></td>
+        <td><%= link_to 'Edit', edit_patient_referral_path(@patient, referral) %></td>
+        <td><%= link_to 'Destroy', @patient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+
+<br>
+
+<%= link_to 'New Referral', new_patient_referral_path %>

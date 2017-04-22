@@ -2,20 +2,18 @@
 
 one:
   name: MyString
-  date_of_Birth: 2017-03-08
+  date_of_birth: 2017-04-05
+  gender: MyString
   address: MyString
-  phone_number: MyString
-  infection: MyText
-  injury: MyText
-  observations: MyText
-  doctor_id: 1
+  email: MyString
+  contact: MyString
+  doctor: one
 
 two:
   name: MyString
-  date_of_Birth: 2017-03-08
+  date_of_birth: 2017-04-05
+  gender: MyString
   address: MyString
-  phone_number: MyString
-  infection: MyText
-  injury: MyText
-  observations: MyText
-  doctor_id: 1
+  email: MyString
+  contact: MyString
+  doctor: two

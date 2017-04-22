@@ -15,13 +15,15 @@ class DoctorsController < ApplicationController
   def show
     @doctor = Doctor.find(params[:id])
     @appointments = @doctor.appointments.paginate(page: params[:page])
+    @search = AppointmentSearch.new(params[:search])
+    @appointments = @search.scope.paginate(page: params[:page])
   end
 
   def create
     @doctor = Doctor.new(doctor_params)    # Not the final implementation!
     if @doctor.save
       # Handle a successful save
-      @doctor.send_activation_email
+      # @doctor.send_activation_email
       flash[:info] = "Please check your email to activate your account."
       redirect_to root_url
     else
@@ -54,7 +56,7 @@ class DoctorsController < ApplicationController
 
     def doctor_params
       params.require(:doctor).permit(:name, :date_of_birth, :job_title, :address, :contact_number, :email, :password,
-                                   :password_confirmation)
+                                   :password_confirmation, :picture)
     end
 
     # Before filters

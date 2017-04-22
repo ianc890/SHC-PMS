@@ -7,7 +7,12 @@
 
 <p>
   <strong>Date of birth:</strong>
-  <%= @patient.date_of_Birth %>
+  <%= @patient.date_of_birth %>
+</p>
+
+<p>
+  <strong>Gender:</strong>
+  <%= @patient.gender %>
 </p>
 
 <p>
@@ -16,23 +21,13 @@
 </p>
 
 <p>
-  <strong>Phone number:</strong>
-  <%= @patient.phone_number %>
+  <strong>Email:</strong>
+  <%= @patient.email %>
 </p>
 
 <p>
-  <strong>Infection:</strong>
-  <%= @patient.infection %>
-</p>
-
-<p>
-  <strong>Injury:</strong>
-  <%= @patient.injury %>
-</p>
-
-<p>
-  <strong>Observations:</strong>
-  <%= @patient.observations %>
+  <strong>Contact:</strong>
+  <%= @patient.contact %>
 </p>
 
 <p>
@@ -41,4 +36,5 @@
 </p>
 
 <%= link_to 'Edit', edit_patient_path(@patient) %> |
-<%= link_to 'Back', patients_path %>
+<%= link_to 'Back', patients_path %> |
+<%= link_to 'Refer', new_patient_referral_path(@patient) %>

@@ -1,20 +1,53 @@
 <% provide(:title, @doctor.name) %>
+<div class='row'>
+  <div class='pull-right range-query'>
+    <%= form_tag doctor_path, method: :get do %>
+    <div class="col-md-4">
+
+      <%= text_field_tag 'search[date_from]', @search.date_from %>
+    </div>
+
+      <div class="col-md-4">
+
+      <%= text_field_tag 'search[date_to]', @search.date_to %>
+    </div>
+
+      <div class="col-md-4">
+
+      <%= submit_tag 'Search', class: 'btn search-button' %>
+    </div>
+    <% end %>
+  </div>
+</div>
 <div class="row">
   <aside class="col-md-4">
     <section class="user_info">
       <h1>
-        <%= gravatar_for @doctor %>
-        <%= @doctor.name %>
+        <div class="gravatar_edit">
+          <% if @doctor.picture? %>
+            <%= link_to( image_tag(@doctor.picture.url), @doctor) %>
+          <% end %>
+          <%= @doctor.name %>
+        </div>
       </h1>
     </section>
   </aside>
-  <div class="col-md-8">
+  <div class="col-md-6">
     <% if @doctor.appointments.any? %>
-      <h3>Appointments (<%= @doctor.appointments.count %>)</h3>
+      <h3>Appointments (<%= @appointments.count %>)</h3>
       <ol class="microposts">
         <%= render @appointments %>
       </ol>
       <%= will_paginate @appointments %>
     <% end %>
+  </div>
+  <div class="col-md-2">
+    <div class='pull-right range-query'>
+      <%= form_tag doctor_path, method: :get do %>
+        <%= date_field_tag 'search[date_from]', @search.date_from, class: 'form-control' %>
+        <%= date_field_tag 'search[date_to]', @search.date_to, class: 'form-control' %>
+        <%= submit_tag 'Search', class: 'btn search-button' %>
+      <% end %>
+    </div>
   </div>
 </div>

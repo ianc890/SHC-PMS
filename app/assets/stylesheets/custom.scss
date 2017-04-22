@@ -1,5 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import url(bootstrap-responsive.css);
 
 .img-circle {
     border-radius: 50%;
@@ -85,6 +86,30 @@ p {
   }
 }
 
+.navbar-inverse {
+    background-color:#3071a9;
+    border-color:#3071a9;
+}
+
+.navbar-nav > li > a {
+  color:white!important;
+  &:hover {
+    color: lightgrey!important;
+  }
+}
+
+.navbar-brand {
+  font-size: 1.7em;
+  color: white!important;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  font-weight: bold;
+  &:hover {
+    color: lightgrey!important;
+    text-decoration: none;
+  }
+}
+
 /* footer */
 
 footer {
@@ -154,8 +179,11 @@ aside {
   margin-right: 10px;
 }
 
-.gravatar_edit {
+.gravatar_edit img{
   margin-top: 15px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
 }
 
 /* forms */

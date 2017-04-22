@@ -15,4 +15,9 @@ class DoctorMailer < ApplicationMailer
     @doctor = doctor
     mail to: doctor.email, subject: "Password reset"
   end
+
+  def notification(doctor)
+    @doctor = doctor
+    mail to: doctor.email, subject: "Welcome"
+  end
 end

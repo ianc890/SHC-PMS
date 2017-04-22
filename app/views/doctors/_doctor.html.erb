@@ -1,8 +1,10 @@
 <li>
-  <%= gravatar_for doctor, size: 50 %>
+  <div class="gravatar_edit">
+  <%= image_tag doctor.picture.url if doctor.picture? %>
   <%= link_to doctor.name, doctor %>
   <% if current_doctor.admin? && !current_doctor?(doctor) %>
     | <%= link_to "delete", doctor, method: :delete,
                                   data: { confirm: "You sure?" } %>
   <% end %>
+</div>
 </li>

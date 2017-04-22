@@ -15,4 +15,10 @@ class DoctorMailerPreview < ActionMailer::Preview
     doctor.reset_token = Doctor.new_token
     DoctorMailer.password_reset(doctor)
   end
+
+  # Preview this email at http://localhost:3000/rails/mailers/doctor_mailer/notification
+  def notification
+    doctor = Doctor.first
+    DoctorMailer.notification(doctor)
+  end
 end
