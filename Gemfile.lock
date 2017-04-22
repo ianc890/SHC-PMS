@@ -81,13 +81,7 @@ GEM
       execjs
     coffee-script-source (1.8.0)
     concurrent-ruby (1.0.5)
-    daemons (1.2.4)
     debug_inspector (0.0.2)
-    delayed_job (4.1.2)
-      activesupport (>= 3.0, < 5.1)
-    delayed_job_active_record (4.1.1)
-      activerecord (>= 3.0, < 5.1)
-      delayed_job (>= 3.0, < 5)
     erubis (2.7.0)
     everett (0.2.2)
       activerecord (~> 5.0)
@@ -391,8 +385,6 @@ DEPENDENCIES
   carrierwave (= 0.11.2)
   coffee-rails (= 4.2.1)
   coffee-script-source (= 1.8.0)
-  daemons
-  delayed_job_active_record
   drape!
   everett
   faker (= 1.6.6)

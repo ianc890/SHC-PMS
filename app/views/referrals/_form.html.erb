@@ -1,4 +1,5 @@
 <%= form_for([@patient, @patient.referrals.build]) do |f| %>
+<%= render 'shared/error_messages', object: f.object %>
   <% if @patient.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@patient.errors.count, "error") %> prohibited this referral from being saved:</h2>
@@ -27,7 +28,6 @@
     <%= f.text_field :doctor_id, :value => @patient.doctor.name, :readonly => true, class: 'form-control' %>
 
     <%= f.label :hospital_id %>
-    <%= collection_select(@patient, :hospital, Referral::HOSPITAL, :to_s, :to_s, {:prompt => "Please select a hospital"}, class: 'form-control') %>
     <%= collection_select(:referral, :hospital_id, @hospitals, :id, :hospital_name, {:prompt => false}, class: 'form-control') %>
 
     <%= f.submit "Request", class: "btn btn-primary" %>

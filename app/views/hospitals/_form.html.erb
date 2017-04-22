@@ -1,0 +1,11 @@
+<%= form_for(@hospital) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <%= f.label :hospital_name %>
+  <%= f.text_field :hospital_name, class: 'form-control' %>
+
+  <%= f.label :county %>
+  <%= collection_select(:hospital, :county, Hospital::COUNTY, :to_s, :to_s, {:prompt => false}, class: 'form-control') %>
+
+  <%= f.submit "Submit", class: "btn btn-primary" %>
+<% end %>
