@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  get 'records/index'
+
+  get 'records/new'
+
+  get 'records/edit'
+
+  get 'records/show'
+
   get 'password_resets/new'
 
   get 'password_resets/edit'
@@ -38,6 +46,7 @@ Rails.application.routes.draw do
   resources :hospitals
   resources :patients do
     resources :referrals
+    resources :records
   end
   resources :doctors
   resources :account_activations, only: [:edit]

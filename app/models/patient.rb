@@ -1,6 +1,7 @@
 class Patient < ApplicationRecord
   has_many :appointments, dependent: :destroy
   has_many :referrals
+  has_many :records
 
   belongs_to :doctor
   default_scope -> { order(created_at: :desc) }
