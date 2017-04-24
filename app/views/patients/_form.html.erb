@@ -30,7 +30,7 @@
     <%= f.text_field :contact, class: 'form-control' %>
 
     <%= f.label :doctor_id %>
-    <%= f.text_field :doctor_id, :readonly => true, class: 'form-control' %>
+    <%= f.text_field :doctor_id, :value => @patient.doctor.name, :readonly => true, class: 'form-control' %>
 
     <%= f.submit "Create Patient", class: "btn btn-primary" %>
 <% end %>
