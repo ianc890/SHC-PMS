@@ -81,7 +81,7 @@ class Doctor < ApplicationRecord
   # See "Following users" for the full implementation.
   def feed
     Appointment.where("doctor_id = ?", id)
-    Appointment.order('appointment_date DESC')
+    Appointment.order('appointment_date ASC')
   end
 
   def doctor_patient
