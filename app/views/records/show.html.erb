@@ -1,2 +1,33 @@
-<h1>Records#show</h1>
-<p>Find me in app/views/records/show.html.erb</p>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Reason for Visit:</strong>
+  <%= @record.reason_for_visit %>
+</p>
+
+<p>
+  <strong>Infection:</strong>
+  <%= @record.infection %>
+</p>
+
+<p>
+  <strong>Injury:</strong>
+  <%= @record.injury %>
+</p>
+
+<p>
+  <strong>Observations:</strong>
+  <%= @record.observations %>
+</p>
+
+<p>
+  <strong>Medications:</strong>
+  <%= @record.medications %>
+</p>
+
+<p>
+  <strong>Patient:</strong>
+  <%= @record.patient.name %>
+</p>
+
+<%= link_to 'Back', patient_records_path(@patient), class: "btn btn-success" %>

@@ -39,6 +39,12 @@ gem 'wkhtmltopdf-binary'
 
 gem 'twilio-ruby'
 
+gem 'chartkick'
+gem 'groupdate'
+gem 'chartjs-ror'
+
+
+
 gem 'everett'
 
 # Decorator

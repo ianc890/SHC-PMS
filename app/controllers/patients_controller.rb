@@ -7,16 +7,15 @@ class PatientsController < ApplicationController
   # GET /patients.json
   def index
   #  @patients = Patient.all
-  @patients = Patient.search(params[:search])
-    @doctors = Doctor.all
+  @patients = Patient.where("doctor_id = ?", current_doctor)
+  @patients = @patients.search(params[:search])
+  @doctors = Doctor.all
   end
 
   # GET /patients/1
   # GET /patients/1.json
   def show
     @patient = Patient.find(params[:id])
-    #@doctor = Doctor.find(params[:id])
-    #session[:item_attributes] = @patient
   end
 
   # GET /patients/new

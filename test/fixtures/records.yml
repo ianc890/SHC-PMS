@@ -1,13 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  infection: 
-  injury: 
-  observations: 
-  medications: 
+  reason_for_visit: MyText
+  infection: MyText
+  injury: MyText
+  observations: MyText
+  medications: MyText
 
 two:
-  infection: 
-  injury: 
-  observations: 
-  medications: 
+  reason_for_visit: MyText
+  infection: MyText
+  injury: MyText
+  observations: MyText
+  medications: MyText

@@ -19,6 +19,4 @@ class AppointmentSearch
     default
   end
 
-
-
 end

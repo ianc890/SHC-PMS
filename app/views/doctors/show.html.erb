@@ -1,24 +1,4 @@
 <% provide(:title, @doctor.name) %>
-<div class='row'>
-  <div class='pull-right range-query'>
-    <%= form_tag doctor_path, method: :get do %>
-    <div class="col-md-4">
-
-      <%= text_field_tag 'search[date_from]', @search.date_from %>
-    </div>
-
-      <div class="col-md-4">
-
-      <%= text_field_tag 'search[date_to]', @search.date_to %>
-    </div>
-
-      <div class="col-md-4">
-
-      <%= submit_tag 'Search', class: 'btn search-button' %>
-    </div>
-    <% end %>
-  </div>
-</div>
 <div class="row">
   <aside class="col-md-4">
     <section class="user_info">
@@ -49,5 +29,10 @@
         <%= submit_tag 'Search', class: 'btn search-button' %>
       <% end %>
     </div>
+  </div>
+  <br>
+  <div class="btn-group">
+    <%= link_to "Generate Weekly Report", reports_weekly_path, class: "btn btn-success" %>
+    <%= link_to "Generate Daily Report", reports_daily_path, class: "btn btn-primary" %>
   </div>
 </div>

@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'reports/weekly', to: "reports#index"
+
+  get 'reports/daily', to: "reports#daily"
+
   get 'records/index'
 
   get 'records/new'
@@ -43,6 +47,7 @@ Rails.application.routes.draw do
 
   root 'static_pages#home'
 
+  resources :reports
   resources :hospitals
   resources :patients do
     resources :referrals

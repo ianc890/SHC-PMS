@@ -26,9 +26,8 @@
         <td><%= referral.patient.name %></td>
         <td><%= referral.doctor.name %></td>
         <td><%= referral.hospital.hospital_name %></td>
-        <td><%= link_to 'Show', patient_referral_path(@patient, referral) %></td>
-        <td><%= link_to 'Edit', edit_patient_referral_path(@patient, referral) %></td>
-        <td><%= link_to 'Destroy', @patient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', patient_referral_path(@patient, referral), class: "btn btn-info" %></td>
+        <td><%= link_to 'Destroy', @patient, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -37,4 +36,4 @@
 
 <br>
 
-<%= link_to 'New Referral', new_patient_referral_path %>
+<%= link_to 'New Referral', new_patient_referral_path, class: "btn btn-success" %>

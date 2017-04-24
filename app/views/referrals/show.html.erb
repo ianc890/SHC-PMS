@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Priority:</strong>
+  <%= @referral.priority %>
+</p>
+
+<p>
+  <strong>Medical Test:</strong>
+  <%= @referral.medical_test %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @referral.description %>
+</p>
+
+<p>
+  <strong>Patient:</strong>
+  <%= @referral.patient.name %>
+</p>
+
+<p>
+  <strong>Doctor:</strong>
+  <%= @referral.doctor.name %>
+</p>
+
+<p>
+  <strong>Hospital:</strong>
+  <%= @referral.hospital.hospital_name %>
+</p>
+
+<%= link_to 'Back', patient_records_path(@patient), class: "btn btn-success" %>

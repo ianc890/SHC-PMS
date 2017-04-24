@@ -15,5 +15,7 @@
   <%= link_to @appointment.patient.name, @appointment.patient %>
 </p>
 
-<%= link_to 'Edit', edit_appointment_path(@appointment) %> |
-<%= link_to 'Back', appointments_path %>
+<div class = "btn-group">
+<%= link_to 'Edit', edit_appointment_path(@appointment), class: "btn btn-warning" %>
+<%= link_to 'Back', appointments_path, class: "btn btn-success" %>
+</div>

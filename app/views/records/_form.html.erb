@@ -1,0 +1,34 @@
+<%= form_for([@patient, @patient.records.build]) do |f| %>
+<%= render 'shared/error_messages', object: f.object %>
+  <% if @patient.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@patient.errors.count, "error") %> prohibited this referral from being saved:</h2>
+
+      <ul>
+      <% @patient.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <%= f.label :reason_for_visit %>
+    <%= f.text_area :reason_for_visit, class: 'form-control' %>
+
+    <%= f.label :infection %>
+    <%= f.text_area :infection, class: 'form-control' %>
+
+    <%= f.label :injury %>
+    <%= f.text_area :injury, class: 'form-control' %>
+
+    <%= f.label :observations %>
+    <%= f.text_area :observations, class: 'form-control' %>
+
+    <%= f.label :medications %>
+    <%= f.text_area :medications, class: 'form-control' %>
+
+    <%= f.label :patient_id %>
+    <%= f.text_field :patient_id, :value => @patient.name, :readonly => true, class: 'form-control' %>
+
+    <%= f.submit "Submit", class: "btn btn-primary" %>
+<% end %>

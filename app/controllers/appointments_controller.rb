@@ -3,7 +3,7 @@ class AppointmentsController < ApplicationController
   before_action :correct_doctor,   only: [:destroy, :edit]
 
   def index
-    @appointments = Appointment.order('appointment_date DESC').decorate
+    @appointments = Appointment.where("doctor_id = ?", current_doctor).decorate
     @patients = Patient.all
     @doctors = Doctor.all
   end
@@ -16,19 +16,6 @@ class AppointmentsController < ApplicationController
     if @appointment.save
       flash[:success] = "Appointment created!"
       redirect_to root_url
-
-      # put your own credentials here
-      account_sid = 'AC1d8c3971dfa6dbcd21a881aa3950d098'
-      auth_token = '1c97ace2b5e7bac04e12c06402672986'
-
-      # set up a client to talk to the Twilio REST API
-      @client = Twilio::REST::Client.new account_sid, auth_token
-
-      @client.account.messages.create({
-        :from => '+353861801236',
-        :to => '+353857773255',
-        :body => 'Appointment created!',
-      })
     else
       @feed_items = []
       render 'static_pages/home'
@@ -77,4 +64,5 @@ class AppointmentsController < ApplicationController
       @appointment = current_doctor.appointments.find_by(id: params[:id])
       redirect_to root_url if @appointment.nil?
     end
+
 end

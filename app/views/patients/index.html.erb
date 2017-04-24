@@ -2,7 +2,7 @@
 
 <h1>Patients</h1>
 
-<div class="col-md-4">
+<div class="col-md-2">
 <%= form_tag patients_path, :method => 'get' do %>
   <p>
     <%= text_field_tag :search, params[:search] %>
@@ -36,15 +36,15 @@
         <td><%= patient.email %></td>
         <td><%= patient.contact %></td>
         <td><%= patient.doctor.name %></td>
-        <td><%= link_to 'Show', patient %></td>
-        <td><%= link_to 'Edit', edit_patient_path(patient) %></td>
-        <td><%= link_to 'Destroy', patient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', patient, class: "btn btn-info" %></td>
+        <td><%= link_to 'Edit', edit_patient_path(patient), class: "btn btn-warning" %></td>
+        <td><%= link_to 'Destroy', patient, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 </div>
-
 <br>
 
-<%= link_to 'New Patient', new_patient_path %>
+
+<%= link_to 'New Patient', new_patient_path, class: "btn btn-success" %>

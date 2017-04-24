@@ -35,6 +35,9 @@
   <%= @patient.doctor.name %>
 </p>
 
-<%= link_to 'Edit', edit_patient_path(@patient) %> |
-<%= link_to 'Back', patients_path %> |
-<%= link_to 'Refer', new_patient_referral_path(@patient) %>
+<div class = "btn-group">
+<%= link_to 'Edit', edit_patient_path(@patient), class: "btn btn-info" %>
+<%= link_to 'Back', patients_path, class: "btn btn-warning" %>
+<%= link_to 'Patient Records', patient_records_path(@patient), class: "btn btn-success" %>
+<%= link_to 'Refer', new_patient_referral_path(@patient), class: "btn btn-primary" %>
+</div>
