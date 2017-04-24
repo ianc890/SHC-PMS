@@ -29,8 +29,7 @@
     <%= f.label :contact %>
     <%= f.text_field :contact, class: 'form-control' %>
 
-    <%= f.label :doctor_id %>
     <%= f.hidden_field :doctor_id, :readonly => true, class: 'form-control' %>
 
-    <%= f.submit "Create Patient", class: "btn btn-primary" %>
+    <%= f.submit "Submit", class: "btn btn-primary" %>
 <% end %>
